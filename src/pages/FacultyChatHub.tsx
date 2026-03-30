@@ -120,7 +120,7 @@ const FacultyChatHub: React.FC = () => {
         let stored: string[] = [];
         try {
           stored = JSON.parse(localStorage.getItem(CNV_KEY(myId)) || '[]');
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (err) {
           /* ignore */
         }
@@ -141,19 +141,19 @@ const FacultyChatHub: React.FC = () => {
             );
             if (!prev.includes(urlPeer))
               localStorage.setItem(key, JSON.stringify([urlPeer, ...prev]));
-          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
           } catch (err) {
             /* ignore */
           }
           setActivePeerId(urlPeer);
           setShowListMobile(false);
         } else if (!activePeerId && merged[0]) setActivePeerId(merged[0]);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
         /* ignore */
       }
     })();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [myId, searchParams]);
 
   useEffect(() => {
@@ -410,7 +410,7 @@ const FacultyChatHub: React.FC = () => {
         ]);
       }
     })();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activePeerId]);
 
   return (

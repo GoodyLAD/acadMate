@@ -284,7 +284,7 @@ const MonitoringSection: React.FC = () => {
       }, refreshInterval);
       return () => clearInterval(interval);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoRefresh, refreshInterval, metrics.length]);
 
   const toggleAutoRefresh = () => {

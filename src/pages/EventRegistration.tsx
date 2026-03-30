@@ -32,7 +32,7 @@ export default function EventRegistration() {
   const event = useMemo(() => {
     const found = id ? getById(id) : null;
     return found;
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, getById, events]);
   const { profile } = useProfile();
   const { toast } = useToast();

@@ -18,7 +18,7 @@ export const useCommunity = () => {
   // Load initial data
   useEffect(() => {
     loadData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Set up real-time subscriptions
@@ -47,7 +47,7 @@ export const useCommunity = () => {
       commentsSubscription.unsubscribe();
       interactionsSubscription.unsubscribe();
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
 
   const loadData = async () => {

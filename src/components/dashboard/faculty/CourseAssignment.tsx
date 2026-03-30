@@ -209,7 +209,7 @@ const CourseAssignment: React.FC = () => {
   useEffect(() => {
     fetchCourses();
     fetchAssignedStudents();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile]);
 
   // Refresh courses when a new one is created

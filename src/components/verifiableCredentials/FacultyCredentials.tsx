@@ -89,7 +89,7 @@ export const FacultyCredentials: React.FC = () => {
       fetchCredentials();
       fetchStudents();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile]);
 
   const fetchCredentials = async () => {

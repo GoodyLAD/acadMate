@@ -241,7 +241,7 @@ export const useFaculty = () => {
     if (profile && profile.role === 'faculty') {
       fetchAssignedStudents();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile]);
 
   // Load monitoring data when assigned students change
@@ -250,7 +250,7 @@ export const useFaculty = () => {
       const studentIds = assignedStudents.map(a => a.student_id);
       fetchMonitoringData(studentIds);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [assignedStudents]);
 
   return {

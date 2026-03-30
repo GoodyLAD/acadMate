@@ -114,7 +114,7 @@ const Navbar = () => {
       { label: 'Dashboard', to: '/' },
       { label: 'Events', to: '/events' },
     ];
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile]);
 
   // Match active tab: exact for '/', prefix for everything else
@@ -134,7 +134,7 @@ const Navbar = () => {
         setIndicator({ left: bRect.left - cRect.left, width: bRect.width });
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname, items]);
 
   // keyboard navigation for tabs

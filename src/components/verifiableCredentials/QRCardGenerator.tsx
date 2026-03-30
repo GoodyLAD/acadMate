@@ -39,7 +39,7 @@ export const QRCardGenerator: React.FC<QRCardGeneratorProps> = ({
   // Generate QR code when component mounts
   React.useEffect(() => {
     generateQRCode();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [credential.qrUrl]);
 
   const generateQRCode = async () => {

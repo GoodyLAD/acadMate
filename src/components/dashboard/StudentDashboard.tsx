@@ -51,7 +51,7 @@ const StudentDashboard = () => {
     if (profile) {
       fetchCertificates();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile]);
 
   const fetchCertificates = async () => {

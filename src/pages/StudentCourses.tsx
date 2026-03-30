@@ -83,7 +83,7 @@ const StudentCourses: React.FC = () => {
     if (profile) {
       fetchAssignedCourses();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile]);
 
   const formatDate = (dateString: string) => {

@@ -278,7 +278,7 @@ const AdminIntegrations: React.FC = () => {
 
   useEffect(() => {
     fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchData = async () => {
@@ -2083,7 +2083,7 @@ const AdminIntegrations: React.FC = () => {
                                   title: 'Configuration File Uploaded',
                                   description: `Successfully parsed ${file.name}`,
                                 });
-                              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                                // eslint-disable-next-line @typescript-eslint/no-unused-vars
                               } catch (error) {
                                 toast({
                                   title: 'Error',

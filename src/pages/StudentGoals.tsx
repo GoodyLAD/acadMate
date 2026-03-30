@@ -23,7 +23,7 @@ const StudentGoals: React.FC = () => {
     try {
       const raw = localStorage.getItem(LOCAL_STORAGE_KEY);
       if (raw) setGoals(JSON.parse(raw));
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       /* ignore */
     }
@@ -31,7 +31,7 @@ const StudentGoals: React.FC = () => {
   useEffect(() => {
     try {
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(goals));
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       /* ignore */
     }

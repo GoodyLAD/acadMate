@@ -188,7 +188,7 @@ const Galaxy: React.FC<GalaxyProps> = ({
       (eventTarget as any).removeEventListener('mouseleave', onLeave);
       try {
         el.removeChild(gl.canvas);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
         /* ignore */
       }

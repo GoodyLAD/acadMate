@@ -156,7 +156,7 @@ export default function FacultyStudentPage() {
         setLoading(false);
       }
     })();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, useMock]);
 
   const summary = useMemo(() => {

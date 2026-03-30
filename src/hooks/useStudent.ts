@@ -696,7 +696,7 @@ export const useStudent = () => {
     if (profile) {
       initializeStudentData();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile]);
 
   return {

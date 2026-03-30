@@ -52,12 +52,12 @@ export const StudentCredentials: React.FC<StudentCredentialsProps> = ({
 
   useEffect(() => {
     loadCredentials();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [studentId]);
 
   useEffect(() => {
     filterAndSortCredentials();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [credentials, searchQuery, sortField, sortOrder, filterStatus]);
 
   const loadCredentials = async () => {

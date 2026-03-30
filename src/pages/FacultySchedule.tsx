@@ -191,7 +191,7 @@ const FacultySchedule: React.FC = () => {
     return () => {
       mounted = false;
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const weekStartDate = useMemo(() => {

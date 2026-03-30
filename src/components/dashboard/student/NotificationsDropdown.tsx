@@ -30,7 +30,7 @@ const NotificationsDropdown = () => {
     if (profile) {
       fetchNotifications();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile]);
 
   const fetchNotifications = async () => {

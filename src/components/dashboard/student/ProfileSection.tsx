@@ -101,11 +101,11 @@ const ProfileSection: React.FC<ProfileSectionProps> = ({ certificates }) => {
           website: '',
         });
       }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       /* ignore */
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile?.id]);
 
   useEffect(() => {
@@ -134,7 +134,7 @@ const ProfileSection: React.FC<ProfileSectionProps> = ({ certificates }) => {
           JSON.stringify(pendingExtras)
         );
         setExtras(pendingExtras);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
         /* ignore */
       }

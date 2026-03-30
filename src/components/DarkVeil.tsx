@@ -124,7 +124,7 @@ const DarkVeil: React.FC<DarkVeilProps> = ({ className }) => {
       ro.disconnect();
       try {
         container.removeChild(gl.canvas);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
         /* ignore */
       }

@@ -15,7 +15,7 @@ export const StudentCredentialsView: React.FC = () => {
     if (profile?.id) {
       loadCredentials();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile?.id]);
 
   const loadCredentials = async () => {

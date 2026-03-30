@@ -19,7 +19,7 @@ export const QRScanner: React.FC<QRScannerProps> = ({ onScan, onClose }) => {
     return () => {
       stopScanning();
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const startScanning = async () => {

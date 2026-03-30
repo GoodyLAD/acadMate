@@ -31,7 +31,7 @@ const FacultyStudents: React.FC = () => {
 
   useEffect(() => {
     fetchFacultyAndStudents();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile]);
 
   const fetchFacultyAndStudents = async () => {

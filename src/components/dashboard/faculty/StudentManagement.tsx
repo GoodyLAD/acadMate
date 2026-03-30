@@ -220,7 +220,7 @@ const StudentManagement: React.FC = () => {
   // Load assigned students on component mount
   useEffect(() => {
     fetchAssignedStudents();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

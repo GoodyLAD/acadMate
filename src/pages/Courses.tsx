@@ -207,7 +207,7 @@ const CoursesPage: React.FC = () => {
         setLoadingCourses(false);
       }
     })();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toast]);
 
   const todayISO = useMemo(() => {

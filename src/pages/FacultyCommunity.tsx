@@ -221,13 +221,13 @@ export default function FacultyCommunity() {
     if (!myId) return;
     try {
       setBookmarks(JSON.parse(localStorage.getItem(BK_KEY(myId)) || '[]'));
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       /* ignore */
     }
     try {
       setBlocked(JSON.parse(localStorage.getItem(BL_KEY(myId)) || '[]'));
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       /* ignore */
     }
@@ -584,7 +584,7 @@ export default function FacultyCommunity() {
           localStorage.setItem(key, JSON.stringify([fid, ...list]));
         }
       }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       /* ignore */
     }

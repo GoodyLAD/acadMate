@@ -926,7 +926,7 @@ const AdminReports = () => {
 
   useEffect(() => {
     loadReportData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTab, selectedYear]);
 
   const loadReportData = async () => {
@@ -1013,7 +1013,7 @@ const AdminReports = () => {
         title: 'Success',
         description: 'Report generated successfully!',
       });
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       toast({
         title: 'Error',

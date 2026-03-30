@@ -89,7 +89,7 @@ const FacultyDashboard = () => {
         fetchCourses();
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile, useMock]);
 
   const mockDelay = (ms: number) => new Promise(res => setTimeout(res, ms));

@@ -86,7 +86,7 @@ const ExternalCourseRecommendations: React.FC = () => {
     if (profile && profile.role === 'student') {
       fetchRecommendations();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile]);
 
   const fetchRecommendations = async () => {

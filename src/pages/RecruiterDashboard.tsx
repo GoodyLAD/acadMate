@@ -54,7 +54,7 @@ const RecruiterDashboard = () => {
 
   useEffect(() => {
     filterStudents();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [students, searchTerm, selectedDepartment]);
 
   const fetchStudents = async () => {

@@ -28,7 +28,7 @@ const TestDataButton = () => {
         setMessage(
           'Mock data loaded to database! The dashboard will now show sample data.'
         );
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (dbError) {
         // If database fails, use local mock data
         enableMockData();
@@ -55,8 +55,10 @@ const TestDataButton = () => {
       // Clear both database and local mock data
       try {
         await clearMockData();
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      } catch (dbError) { /* ignore */ }
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (dbError) {
+        /* ignore */
+      }
 
       disableMockData();
       setStatus('success');

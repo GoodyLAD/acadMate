@@ -64,7 +64,7 @@ async function scrapeProfile(url: string): Promise<string | null> {
           return html;
         }
       }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       continue;
     }
@@ -138,7 +138,7 @@ export async function fetchLeetCodeData(
             platform: 'leetcode',
           };
         }
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (apiError) {
         continue;
       }
@@ -164,8 +164,10 @@ export async function fetchLeetCodeData(
           platform: 'leetcode',
         };
       }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (scrapingError) { /* ignore */ }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (scrapingError) {
+      /* ignore */
+    }
 
     console.warn(`All LeetCode APIs failed for user ${studentId}`);
     return { solved: 0, hours: 0, courses: 0, contests: 0, rating: 0 };
@@ -391,7 +393,7 @@ export async function fetchGFGData(studentId: string): Promise<PlatformData> {
             };
           }
         }
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (scrapingError) {
         continue;
       }
@@ -507,7 +509,7 @@ export async function fetchHackerRankData(
             };
           }
         }
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (scrapingError) {
         continue;
       }
@@ -562,8 +564,10 @@ export async function fetchHackerEarthData(
           };
         }
       }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (apiError) { /* ignore */ }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (apiError) {
+      /* ignore */
+    }
 
     // Enhanced scraping with multiple URL patterns
     const urls = [
@@ -657,7 +661,7 @@ export async function fetchHackerEarthData(
             };
           }
         }
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (scrapingError) {
         continue;
       }
@@ -805,7 +809,7 @@ export async function fetchCodeChefData(
             };
           }
         }
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (scrapingError) {
         continue;
       }

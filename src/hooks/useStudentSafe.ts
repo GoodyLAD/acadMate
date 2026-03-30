@@ -185,7 +185,7 @@ export const useStudentSafe = () => {
   // Load data on mount
   useEffect(() => {
     loadData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile]);
 
   return {
