@@ -3,7 +3,7 @@ import {
   blockchainService,
   WalletInfo,
   Achievement,
-} from '../services/blockChainService';
+} from '../services/blockchainService';
 
 interface BlockchainContextType {
   isConnected: boolean;
