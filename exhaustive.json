@@ -1,0 +1,212 @@
+[
+  {
+    "file": "D:\\SIH2-main\\src\\components\\dashboard\\FacultyDashboard.tsx",
+    "line": 92,
+    "message": "React Hook useEffect has missing dependencies: 'fetchCertificates', 'fetchCourses', 'fetchStudents', 'mockFetchCertificates', and 'mockFetchStudents'. Either include them or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\components\\dashboard\\StudentDashboard.tsx",
+    "line": 54,
+    "message": "React Hook useEffect has a missing dependency: 'fetchCertificates'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\components\\dashboard\\faculty\\CourseAssignment.tsx",
+    "line": 212,
+    "message": "React Hook useEffect has missing dependencies: 'fetchAssignedStudents' and 'fetchCourses'. Either include them or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\components\\dashboard\\faculty\\MonitoringSection.tsx",
+    "line": 287,
+    "message": "React Hook React.useEffect has a missing dependency: 'fetchMetrics'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\components\\dashboard\\faculty\\StudentManagement.tsx",
+    "line": 223,
+    "message": "React Hook useEffect has a missing dependency: 'fetchAssignedStudents'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\components\\dashboard\\student\\NotificationsDropdown.tsx",
+    "line": 33,
+    "message": "React Hook useEffect has a missing dependency: 'fetchNotifications'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\components\\dashboard\\student\\ProfileSection.tsx",
+    "line": 102,
+    "message": "React Hook useEffect has a missing dependency: 'profile'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\components\\layout\\Navbar.tsx",
+    "line": 117,
+    "message": "React Hook React.useMemo has missing dependencies: 'adminItems', 'facultyItems', and 'studentItems'. Either include them or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\components\\layout\\Navbar.tsx",
+    "line": 136,
+    "message": "React Hook React.useLayoutEffect has a missing dependency: 'isItemActive'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\components\\recommendations\\CourseRecommendations.tsx",
+    "line": 43,
+    "message": "React Hook useEffect has a missing dependency: 'fetchRecommendations'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\components\\recommendations\\ExternalCourseRecommendations.tsx",
+    "line": 89,
+    "message": "React Hook useEffect has a missing dependency: 'fetchRecommendations'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\components\\ui\\pixel-blast.tsx",
+    "line": 238,
+    "message": "The ref value 'mountRef.current' will likely have changed by the time this effect cleanup function runs. If this ref points to a node rendered by React, copy 'mountRef.current' to a variable inside the effect, and use that variable in the cleanup function."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\components\\verifiableCredentials\\FacultyCredentials.tsx",
+    "line": 92,
+    "message": "React Hook useEffect has missing dependencies: 'fetchCredentials' and 'fetchStudents'. Either include them or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\components\\verifiableCredentials\\QRCardGenerator.tsx",
+    "line": 42,
+    "message": "React Hook React.useEffect has a missing dependency: 'generateQRCode'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\components\\verifiableCredentials\\QRScanner.tsx",
+    "line": 22,
+    "message": "React Hook useEffect has a missing dependency: 'startScanning'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\components\\verifiableCredentials\\StudentCredentials.tsx",
+    "line": 55,
+    "message": "React Hook useEffect has a missing dependency: 'loadCredentials'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\components\\verifiableCredentials\\StudentCredentials.tsx",
+    "line": 59,
+    "message": "React Hook useEffect has a missing dependency: 'filterAndSortCredentials'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\components\\verifiableCredentials\\StudentCredentialsView.tsx",
+    "line": 18,
+    "message": "React Hook useEffect has a missing dependency: 'loadCredentials'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\hooks\\useCommunity.ts",
+    "line": 21,
+    "message": "React Hook useEffect has a missing dependency: 'loadData'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\hooks\\useCommunity.ts",
+    "line": 49,
+    "message": "React Hook useEffect has a missing dependency: 'loadPosts'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\hooks\\useCommunity.ts",
+    "line": 66,
+    "message": "The 'loadPosts' function makes the dependencies of useCallback Hook (at line 166) change on every render. To fix this, wrap the definition of 'loadPosts' in its own useCallback() Hook."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\hooks\\useCommunity.ts",
+    "line": 66,
+    "message": "The 'loadPosts' function makes the dependencies of useCallback Hook (at line 315) change on every render. To fix this, wrap the definition of 'loadPosts' in its own useCallback() Hook."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\hooks\\useFaculty.ts",
+    "line": 244,
+    "message": "React Hook useEffect has a missing dependency: 'fetchAssignedStudents'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\hooks\\useFaculty.ts",
+    "line": 252,
+    "message": "React Hook useEffect has a missing dependency: 'fetchMonitoringData'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\hooks\\useProfile.ts",
+    "line": 34,
+    "message": "React Hook useEffect has a missing dependency: 'fetchProfile'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\hooks\\useStudent.ts",
+    "line": 699,
+    "message": "React Hook useEffect has a missing dependency: 'initializeStudentData'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\hooks\\useStudentSafe.ts",
+    "line": 188,
+    "message": "React Hook useEffect has a missing dependency: 'loadData'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\pages\\AdminAssignments.tsx",
+    "line": 52,
+    "message": "React Hook useEffect has a missing dependency: 'fetchData'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\pages\\AdminDashboard.tsx",
+    "line": 55,
+    "message": "React Hook useEffect has a missing dependency: 'fetchDashboardStats'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\pages\\AdminFaculty.tsx",
+    "line": 43,
+    "message": "React Hook useEffect has a missing dependency: 'fetchFaculty'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\pages\\AdminIntegrations.tsx",
+    "line": 280,
+    "message": "React Hook useEffect has a missing dependency: 'fetchData'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\pages\\AdminReports.tsx",
+    "line": 929,
+    "message": "React Hook useEffect has a missing dependency: 'loadReportData'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\pages\\Courses.tsx",
+    "line": 210,
+    "message": "React Hook useEffect has missing dependencies: 'profile.email', 'profile.id', and 'profile?.role'. Either include them or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\pages\\EventDetail.tsx",
+    "line": 15,
+    "message": "React Hook useMemo has a missing dependency: 'getById'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\pages\\EventRegistration.tsx",
+    "line": 35,
+    "message": "React Hook useMemo has an unnecessary dependency: 'events'. Either exclude it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\pages\\FacultyChatHub.tsx",
+    "line": 152,
+    "message": "React Hook useEffect has a missing dependency: 'activePeerId'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\pages\\FacultyChatHub.tsx",
+    "line": 408,
+    "message": "React Hook useEffect has a missing dependency: 'faculties'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\pages\\FacultySchedule.tsx",
+    "line": 193,
+    "message": "React Hook useEffect has a missing dependency: 'toast'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\pages\\FacultyStudent.tsx",
+    "line": 159,
+    "message": "React Hook useEffect has a missing dependency: 'toast'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\pages\\FacultyStudents.tsx",
+    "line": 34,
+    "message": "React Hook useEffect has a missing dependency: 'fetchFacultyAndStudents'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\pages\\RecruiterDashboard.tsx",
+    "line": 57,
+    "message": "React Hook useEffect has a missing dependency: 'filterStudents'. Either include it or remove the dependency array."
+  },
+  {
+    "file": "D:\\SIH2-main\\src\\pages\\StudentCourses.tsx",
+    "line": 86,
+    "message": "React Hook useEffect has a missing dependency: 'fetchAssignedCourses'. Either include it or remove the dependency array."
+  }
+]
