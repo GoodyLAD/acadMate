@@ -11,12 +11,12 @@ const Index = () => {
   const { profile, loading: profileLoading } = useProfile();
   const navigate = useNavigate();
 
-  // Redirect admin-level faculty to admin dashboard
+  // Redirect admin-level faculty or admin role to admin dashboard
   useEffect(() => {
     if (
       profile &&
-      profile.role === 'faculty' &&
-      profile.faculty_level === 'admin'
+      (profile.role === 'admin' ||
+        (profile.role === 'faculty' && profile.faculty_level === 'admin'))
     ) {
       navigate('/admin', { replace: true });
     }

@@ -87,7 +87,7 @@ const FacultyStudents: React.FC = () => {
         .select(
           `
           *,
-          student:profiles!student_mentor_assignments_student_id_fkey(*)
+          student:profiles(*)
         `
         )
         .eq('mentor_id', facultyData.id)

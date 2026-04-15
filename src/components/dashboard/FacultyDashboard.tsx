@@ -184,6 +184,7 @@ const FacultyDashboard = () => {
     try {
       let filterIds: string[] | null = null;
       if (
+        profile.role !== 'admin' &&
         profile.faculty_level !== 'senior' &&
         profile.faculty_level !== 'admin'
       ) {
@@ -325,12 +326,11 @@ const FacultyDashboard = () => {
         .select(
           `
           *,
-          student:profiles!student_mentor_assignments_student_id_fkey(
+          student:profiles(
             id,
             full_name,
             email,
-            student_id,
-            department
+            student_id
           )
         `
         )
@@ -741,7 +741,8 @@ const FacultyDashboard = () => {
             <CardHeader>
               <CardTitle>Students Overview</CardTitle>
               <CardDescription>
-                {profile?.faculty_level === 'senior' ||
+                {profile?.role === 'admin' ||
+                profile?.faculty_level === 'senior' ||
                 profile?.faculty_level === 'admin'
                   ? 'All students in the system'
                   : 'Students assigned to you'}

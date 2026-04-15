@@ -62,8 +62,8 @@ const AdminAssignments: React.FC = () => {
         .select(
           `
           *,
-          student:profiles!student_mentor_assignments_student_id_fkey(*),
-          mentor:faculty!student_mentor_assignments_mentor_id_fkey(*)
+          student:profiles(*),
+          mentor:faculty(*)
         `
         )
         .order('created_at', { ascending: false });
@@ -160,11 +160,11 @@ const AdminAssignments: React.FC = () => {
 
       fetchData();
       setShowAssignModal(false);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error assigning mentor:', error);
       toast({
         title: 'Error',
-        description: 'Failed to assign mentor',
+        description: error.message || 'Failed to assign mentor',
         variant: 'destructive',
       });
     }
@@ -187,11 +187,11 @@ const AdminAssignments: React.FC = () => {
       });
 
       fetchData();
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error unassigning mentor:', error);
       toast({
         title: 'Error',
-        description: 'Failed to unassign mentor',
+        description: error.message || 'Failed to unassign mentor',
         variant: 'destructive',
       });
     }

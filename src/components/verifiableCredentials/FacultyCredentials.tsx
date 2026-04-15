@@ -216,7 +216,8 @@ export const FacultyCredentials: React.FC = () => {
         .from('student_mentor_assignments')
         .select(
           `
-          student:profiles!student_mentor_assignments_student_id_fkey(
+          *,
+          student:profiles(
             id,
             full_name,
             email

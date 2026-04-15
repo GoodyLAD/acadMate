@@ -111,9 +111,10 @@ const AdminRoute: React.FC<AdminRouteProps> = ({ children }) => {
     return <Navigate to='/auth' replace />;
   }
 
-  // If no profile or user is not an admin-level faculty, show access denied
+  // If no profile or user is not an admin, show access denied
   const isAdmin =
-    profile?.role === 'faculty' && profile?.faculty_level === 'admin';
+    profile?.role === 'admin' ||
+    (profile?.role === 'faculty' && profile?.faculty_level === 'admin');
   if (!profile || !isAdmin) {
     return (
       <div className='min-h-screen bg-gradient-to-br from-red-50 via-pink-50 to-purple-50 flex items-center justify-center p-8'>

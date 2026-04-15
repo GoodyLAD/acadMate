@@ -100,7 +100,10 @@ const Navbar = () => {
   ];
 
   const items = React.useMemo(() => {
-    if (profile?.role === 'faculty' && profile?.faculty_level === 'admin') {
+    if (
+      profile?.role === 'admin' ||
+      (profile?.role === 'faculty' && profile?.faculty_level === 'admin')
+    ) {
       return adminItems;
     }
     if (profile?.role === 'faculty') {
