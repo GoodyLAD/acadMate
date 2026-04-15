@@ -125,6 +125,7 @@ const Home = () => {
               <Button
                 size='lg'
                 className='bg-white text-slate-900 hover:bg-slate-100 font-semibold'
+                onClick={() => navigate('/dashboard')}
               >
                 <BarChart3 className='w-5 h-5 mr-2' />
                 View Dashboard

@@ -151,11 +151,10 @@ export const useStudent = () => {
       const { data, error } = await supabase
         .from('student_progress')
         .select('*')
-        .eq('student_id', profile.id)
-        .single();
+        .eq('student_id', profile.id);
 
-      if (error && error.code !== 'PGRST116') throw error;
-      setProgress(data);
+      if (error) throw error;
+      setProgress(data && data.length > 0 ? data[0] : null);
     } catch (error) {
       console.error('Error fetching progress:', error);
     }
@@ -226,8 +225,8 @@ export const useStudent = () => {
         .select(
           `
           *,
-          requester:profiles!student_connections_requester_id_fkey(full_name, avatar_url),
-          receiver:profiles!student_connections_receiver_id_fkey(full_name, avatar_url)
+          requester:profiles!student_connections_requester_fkey(id, full_name),
+          receiver:profiles!student_connections_receiver_fkey(id, full_name)
         `
         )
         .or(`requester_id.eq.${profile.id},receiver_id.eq.${profile.id}`)

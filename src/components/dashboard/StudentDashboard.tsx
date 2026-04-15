@@ -253,7 +253,13 @@ const StudentDashboard = () => {
           <DialogHeader>
             <DialogTitle>My Certificates</DialogTitle>
           </DialogHeader>
-          <CertificatesSection certificates={certificates} />
+          <CertificatesSection 
+            certificates={certificates} 
+            onUploadClick={() => {
+              setCertsOpen(false);
+              setShowUploadPanel(true);
+            }} 
+          />
         </DialogContent>
       </Dialog>
     </div>

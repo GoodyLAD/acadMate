@@ -84,18 +84,13 @@ const App = () => {
                   element={<RecruiterStudentProfile />}
                 />
 
+                {/* Landing page */}
+                <Route path='/' element={<Home />} />
+
                 {/* Dashboard root – renders StudentDashboard or FacultyDashboard based on role */}
-                <Route path='/' element={<Index />} />
+                <Route path='/dashboard' element={<Index />} />
 
                 {/* ─── STUDENT ROUTES ──────────────────────────── */}
-                <Route
-                  path='/home'
-                  element={
-                    <StudentRoute>
-                      <Home />
-                    </StudentRoute>
-                  }
-                />
                 <Route
                   path='/profile'
                   element={

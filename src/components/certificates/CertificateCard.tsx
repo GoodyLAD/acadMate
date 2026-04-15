@@ -8,39 +8,38 @@ import {
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Eye, Edit, FileText, User } from 'lucide-react';
+import { Eye, Download, FileText } from 'lucide-react';
 
 export interface Certificate {
   id: string;
   title: string;
-  category: 'Academic' | 'Co-Curricular' | 'Verified Professional Certificates';
-  subcategory?: string;
-  issuingCompany?: string;
-  reviewer: string;
-  status: 'Pending' | 'Approved' | 'Verified';
-  uploadedAt: string;
   description?: string;
+  category: 'academic' | 'co_curricular';
+  status: 'pending' | 'approved' | 'rejected';
+  file_url: string;
+  file_name: string;
+  uploaded_at: string;
+  rejection_reason?: string;
+  remark?: string;
 }
 
 interface CertificateCardProps {
   certificate: Certificate;
   onViewClick: (certificate: Certificate) => void;
-  onEditClick: (certificate: Certificate) => void;
 }
 
 const CertificateCard: React.FC<CertificateCardProps> = ({
   certificate,
   onViewClick,
-  onEditClick,
 }) => {
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'Pending':
+      case 'pending':
         return 'bg-orange-100 text-orange-800 border-orange-200';
-      case 'Approved':
+      case 'approved':
         return 'bg-green-100 text-green-800 border-green-200';
-      case 'Verified':
-        return 'bg-blue-100 text-blue-800 border-blue-200';
+      case 'rejected':
+        return 'bg-red-100 text-red-800 border-red-200';
       default:
         return 'bg-gray-100 text-gray-800 border-gray-200';
     }
@@ -48,15 +47,17 @@ const CertificateCard: React.FC<CertificateCardProps> = ({
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
-      case 'Academic':
+      case 'academic':
         return '🎓';
-      case 'Co-Curricular':
+      case 'co_curricular':
         return '🏆';
-      case 'Verified Professional Certificates':
-        return '🏢';
       default:
         return '📄';
     }
+  };
+
+  const getCategoryLabel = (category: string) => {
+    return category === 'co_curricular' ? 'Co-Curricular' : 'Academic';
   };
 
   return (
@@ -64,23 +65,18 @@ const CertificateCard: React.FC<CertificateCardProps> = ({
       <CardHeader className='pb-3'>
         <div className='flex items-start justify-between'>
           <div className='flex items-center gap-2'>
-            <span className='text-2xl'>
-              {getCategoryIcon(certificate.category)}
-            </span>
+            <span className='text-2xl'>{getCategoryIcon(certificate.category)}</span>
             <div>
-              <CardTitle className='text-lg font-semibold text-gray-900 line-clamp-2'>
+              <CardTitle className='text-base font-semibold text-gray-900 line-clamp-2'>
                 {certificate.title}
               </CardTitle>
               <CardDescription className='text-sm text-gray-600 mt-1'>
-                {certificate.category}
-                {certificate.subcategory && ` • ${certificate.subcategory}`}
-                {certificate.issuingCompany &&
-                  ` • ${certificate.issuingCompany}`}
+                {getCategoryLabel(certificate.category)}
               </CardDescription>
             </div>
           </div>
           <Badge
-            className={`text-xs font-medium px-2 py-1 rounded-full border ${getStatusColor(certificate.status)}`}
+            className={`text-xs font-medium px-2 py-1 rounded-full border capitalize ${getStatusColor(certificate.status)}`}
           >
             {certificate.status}
           </Badge>
@@ -89,42 +85,48 @@ const CertificateCard: React.FC<CertificateCardProps> = ({
 
       <CardContent className='pt-0'>
         <div className='space-y-3'>
-          <div className='flex items-center gap-2 text-sm text-gray-600'>
-            <User className='h-4 w-4' />
-            <span>Reviewer: {certificate.reviewer}</span>
-          </div>
-
           <div className='flex items-center gap-2 text-sm text-gray-500'>
             <FileText className='h-4 w-4' />
             <span>
-              Uploaded: {new Date(certificate.uploadedAt).toLocaleDateString()}
+              Uploaded: {new Date(certificate.uploaded_at).toLocaleDateString()}
             </span>
           </div>
 
           {certificate.description && (
-            <p className='text-sm text-gray-700 line-clamp-2'>
-              {certificate.description}
-            </p>
+            <p className='text-sm text-gray-700 line-clamp-2'>{certificate.description}</p>
           )}
+
+          {certificate.status === 'rejected' &&
+            (certificate.remark || certificate.rejection_reason) && (
+              <div className='p-2 bg-red-50 border border-red-200 rounded text-xs text-red-700'>
+                <strong>Reason: </strong>
+                {certificate.remark || certificate.rejection_reason}
+              </div>
+            )}
 
           <div className='flex gap-2 pt-2'>
             <Button
               onClick={() => onViewClick(certificate)}
               variant='outline'
               size='sm'
-              className='flex-1 border-blue-300 text-blue-700 hover:bg-blue-50 transition-colors duration-200'
+              className='flex-1 border-blue-300 text-blue-700 hover:bg-blue-50'
             >
               <Eye className='h-4 w-4 mr-2' />
               View
             </Button>
             <Button
-              onClick={() => onEditClick(certificate)}
               variant='outline'
               size='sm'
-              className='flex-1 border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors duration-200'
+              className='flex-1 border-gray-300 text-gray-700 hover:bg-gray-50'
+              onClick={() => {
+                const link = document.createElement('a');
+                link.href = certificate.file_url;
+                link.download = certificate.file_name;
+                link.click();
+              }}
             >
-              <Edit className='h-4 w-4 mr-2' />
-              Edit
+              <Download className='h-4 w-4 mr-2' />
+              Download
             </Button>
           </div>
         </div>

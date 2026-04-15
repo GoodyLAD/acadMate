@@ -30,10 +30,12 @@ interface Certificate {
 
 interface CertificatesSectionProps {
   certificates: Certificate[];
+  onUploadClick?: () => void;
 }
 
 const CertificatesSection: React.FC<CertificatesSectionProps> = ({
   certificates,
+  onUploadClick,
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -172,8 +174,14 @@ const CertificatesSection: React.FC<CertificatesSectionProps> = ({
   }) => (
     <div className='space-y-4'>
       {certs.length === 0 ? (
-        <div className='text-center py-8 text-muted-foreground'>
-          <p>{emptyMessage}</p>
+        <div className='flex flex-col items-center justify-center py-12 text-muted-foreground'>
+          <p className='mb-4'>{emptyMessage}</p>
+          {onUploadClick && (
+            <Button onClick={onUploadClick} variant='outline'>
+              <Upload className='h-4 w-4 mr-2' />
+              Upload Certificate
+            </Button>
+          )}
         </div>
       ) : (
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
@@ -190,14 +198,22 @@ const CertificatesSection: React.FC<CertificatesSectionProps> = ({
       <CardHeader>
         <div className='flex items-center justify-between'>
           <CardTitle className='text-xl font-bold'>My Certificates</CardTitle>
-          <div className='relative w-64'>
-            <Search className='absolute left-2 top-2.5 h-4 w-4 text-muted-foreground' />
-            <Input
-              placeholder='Search certificates...'
-              value={searchTerm}
-              onChange={e => setSearchTerm(e.target.value)}
-              className='pl-8'
-            />
+          <div className='flex items-center space-x-3'>
+            <div className='relative w-64'>
+              <Search className='absolute left-2 top-2.5 h-4 w-4 text-muted-foreground' />
+              <Input
+                placeholder='Search certificates...'
+                value={searchTerm}
+                onChange={e => setSearchTerm(e.target.value)}
+                className='pl-8'
+              />
+            </div>
+            {onUploadClick && (
+              <Button onClick={onUploadClick} className='bg-violet-600 hover:bg-violet-700 text-white'>
+                <Upload className='h-4 w-4 mr-2' />
+                Upload
+              </Button>
+            )}
           </div>
         </div>
       </CardHeader>

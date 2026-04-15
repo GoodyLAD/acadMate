@@ -85,6 +85,9 @@ const MyProjectsPage: React.FC = () => {
   const [githubUsername, setGithubUsername] = useState('');
   const [editProject, setEditProject] = useState<StudentPortfolio | null>(null);
   const [githubProjects, setGithubProjects] = useState<GitHubRepository[]>([]);
+  const [isGithubConnected, setIsGithubConnected] = useState(
+    GitHubService.getInstance().isAuthenticated()
+  );
 
   // Form state for new project
   const [newProject, setNewProject] = useState({
@@ -247,6 +250,17 @@ const MyProjectsPage: React.FC = () => {
     setShowUsernameDialog(true);
   };
 
+  const handleGithubDisconnect = () => {
+    GitHubService.getInstance().logout();
+    setIsGithubConnected(false);
+    setGithubProjects([]);
+    setGithubRepos([]);
+    toast({
+      title: 'GitHub Disconnected',
+      description: 'Successfully disconnected your GitHub account.',
+    });
+  };
+
   const handleUsernameSubmit = async () => {
     if (!githubUsername.trim()) {
       toast({
@@ -260,6 +274,7 @@ const MyProjectsPage: React.FC = () => {
     const githubService = GitHubService.getInstance();
     githubService.setUsername(githubUsername.trim());
     setShowUsernameDialog(false);
+    setIsGithubConnected(true);
 
     toast({
       title: 'GitHub Connected',
@@ -432,20 +447,29 @@ const MyProjectsPage: React.FC = () => {
               <Eye className='h-4 w-4 mr-2' />
               View Gallery
             </Button>
-            {GitHubService.getInstance().isAuthenticated() ? (
-              <Button
-                onClick={handleGithubImport}
-                disabled={githubLoading}
-                variant='outline'
-                className='border-gray-300 text-gray-700 hover:bg-gray-50'
-              >
-                {githubLoading ? (
-                  <Loader2 className='h-4 w-4 mr-2 animate-spin' />
-                ) : (
-                  <Github className='h-4 w-4 mr-2' />
-                )}
-                Import from GitHub
-              </Button>
+            {isGithubConnected ? (
+              <>
+                <Button
+                  onClick={handleGithubDisconnect}
+                  variant='outline'
+                  className='border-red-300 text-red-600 hover:bg-red-50'
+                >
+                  Disconnect GitHub
+                </Button>
+                <Button
+                  onClick={handleGithubImport}
+                  disabled={githubLoading}
+                  variant='outline'
+                  className='border-gray-300 text-gray-700 hover:bg-gray-50'
+                >
+                  {githubLoading ? (
+                    <Loader2 className='h-4 w-4 mr-2 animate-spin' />
+                  ) : (
+                    <Github className='h-4 w-4 mr-2' />
+                  )}
+                  Import from GitHub
+                </Button>
+              </>
             ) : (
               <Button
                 onClick={handleGithubConnect}

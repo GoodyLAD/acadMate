@@ -62,10 +62,11 @@ const CourseAssignment: React.FC = () => {
     try {
       setLoading(true);
 
-      // Just fetch all courses - simple
+      // Fetch courses belonging to the current faculty
       const { data: coursesData, error: coursesError } = await supabase
         .from('courses')
         .select('*')
+        .eq('faculty_id', profile.id)
         .order('name');
 
       if (coursesError) {
@@ -134,14 +135,19 @@ const CourseAssignment: React.FC = () => {
           updatedStudentIds.push(studentId);
         }
       }
-      const { error } = await supabase
+      const { data, error } = await supabase
         .from('courses')
         .update({ assigned_student_ids: updatedStudentIds })
-        .eq('id', selectedCourse);
+        .eq('id', selectedCourse)
+        .select();
 
       if (error) {
         console.error('Error updating course:', error);
         throw error;
+      }
+      
+      if (!data || data.length === 0) {
+        throw new Error('You do not have permission to modify this course. Make sure you are the one who created it.');
       }
       const message =
         selectedStudent === 'all'
@@ -179,13 +185,18 @@ const CourseAssignment: React.FC = () => {
         id => id !== studentId
       );
 
-      const { error } = await supabase
+      const { data, error } = await supabase
         .from('courses')
         .update({ assigned_student_ids: updatedStudentIds })
-        .eq('id', courseId);
+        .eq('id', courseId)
+        .select();
 
       if (error) {
         throw error;
+      }
+
+      if (!data || data.length === 0) {
+        throw new Error('You do not have permission to modify this course. Make sure you are the one who created it.');
       }
 
       toast({

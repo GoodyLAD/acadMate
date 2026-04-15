@@ -14,13 +14,13 @@ export const useStudentSafe = () => {
   const [milestones, setMilestones] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
 
-  // Safe fetch function that handles missing tables
   const safeFetch = async (tableName: string, query: any) => {
     try {
-      const { data, error } = await supabase
-        .from(tableName)
-        .select(query.select || '*')
-        .modify(query.modify || (q => q));
+      let q = supabase.from(tableName).select(query.select || '*');
+      if (query.modify) {
+        q = query.modify(q);
+      }
+      const { data, error } = await q;
 
       if (error) {
         // If table doesn't exist, return empty data instead of throwing
@@ -45,10 +45,11 @@ export const useStudentSafe = () => {
 
     const { data } = await safeFetch('student_progress', {
       select: '*',
-      modify: (q: any) => q.eq('student_id', profile.id).single(),
+      modify: (q: any) => q.eq('student_id', profile.id),
     });
 
-    setProgress(data);
+    // Handle array response since we removed .single() to prevent PGRST116 errors
+    setProgress(Array.isArray(data) && data.length > 0 ? data[0] : null);
   };
 
   // Fetch achievements
@@ -102,12 +103,12 @@ export const useStudentSafe = () => {
     const { data } = await safeFetch('student_connections', {
       select: `
         *,
-        student:profiles!student_connections_student_id_fkey(full_name, avatar_url),
-        connection:profiles!student_connections_connection_id_fkey(full_name, avatar_url)
+        student:profiles!student_connections_requester_fkey(id, full_name),
+        connection:profiles!student_connections_receiver_fkey(id, full_name)
       `,
       modify: (q: any) =>
         q
-          .or(`student_id.eq.${profile.id},connection_id.eq.${profile.id}`)
+          .or(`requester_id.eq.${profile.id},receiver_id.eq.${profile.id}`)
           .order('created_at', { ascending: false }),
     });
 
@@ -133,7 +134,7 @@ export const useStudentSafe = () => {
   const fetchRecommendations = async () => {
     if (!profile) return;
 
-    const { data } = await safeFetch('student_recommendations', {
+    const { data } = await safeFetch('learning_recommendations', {
       select: '*',
       modify: (q: any) =>
         q

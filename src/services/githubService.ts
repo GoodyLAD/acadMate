@@ -279,6 +279,7 @@ class GitHubService {
   public logout(): void {
     this.accessToken = null;
     localStorage.removeItem('github_access_token');
+    localStorage.removeItem('github_username');
   }
 
   // Generate random state for OAuth

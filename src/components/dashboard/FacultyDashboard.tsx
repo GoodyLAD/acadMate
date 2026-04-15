@@ -417,7 +417,6 @@ const FacultyDashboard = () => {
         status: action === 'approve' ? 'approved' : 'rejected',
         verified_by: profile?.id,
         verified_at: new Date().toISOString(),
-        remark: reason,
       };
 
       if (action === 'reject' && reason) {

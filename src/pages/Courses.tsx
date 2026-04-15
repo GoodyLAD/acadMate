@@ -307,68 +307,12 @@ const CoursesPage: React.FC = () => {
     e?.preventDefault();
     setSubmitting(true);
     try {
-      // For faculty users, get their faculty record ID instead of profile ID
+      // Courses.faculty_id references profiles.id.
+      // Use the faculty ID from the dropdown or default to the current profile's ID if user is faculty
       let effectiveFacultyId = facultyId;
 
       if (profile?.role === 'faculty' && !facultyId) {
-        // Look up the faculty record by user_id or email
-        const { data: facultyRecord, error: facultyError } = await supabase
-          .from('faculty')
-          .select('id, name, email, user_id')
-          .or(`user_id.eq.${profile.id},email.eq.${profile.email}`)
-          .single();
-        if (facultyRecord) {
-          effectiveFacultyId = facultyRecord.id;
-        } else {
-          console.error('Faculty record not found for user:', profile);
-          console.error('Faculty lookup error:', facultyError);
-
-          // Try to create a faculty record if it doesn't exist
-          const { data: newFaculty, error: createError } = await supabase
-            .from('faculty')
-            .insert({
-              id: profile.id, // Use profile ID as faculty ID to ensure consistency
-              name: profile.full_name || 'Faculty Member',
-              email: profile.email,
-              department: 'General',
-              designation:
-                profile.faculty_level === 'admin'
-                  ? 'Administrator'
-                  : profile.faculty_level === 'senior'
-                    ? 'Senior Faculty'
-                    : 'Faculty',
-              is_verified: true,
-              user_id: profile.user_id,
-            })
-            .select('id')
-            .single();
-
-          if (newFaculty) {
-            effectiveFacultyId = newFaculty.id;
-          } else {
-            console.error('Failed to create faculty record:', createError);
-
-            // Try to get any available faculty ID as fallback
-            const { data: anyFaculty } = await supabase
-              .from('faculty')
-              .select('id')
-              .limit(1)
-              .single();
-
-            if (anyFaculty) {
-              effectiveFacultyId = anyFaculty.id;
-            } else {
-              toast({
-                title: 'Faculty Record Not Found',
-                description:
-                  'No faculty record found for your account. Please contact administrator.',
-                variant: 'destructive',
-              });
-              setSubmitting(false);
-              return;
-            }
-          }
-        }
+        effectiveFacultyId = profile.id;
       }
 
       const ok = await validate(effectiveFacultyId);
@@ -418,40 +362,7 @@ const CoursesPage: React.FC = () => {
         thumbnail_url,
         external_link: externalLink || null,
       } as any;
-      // Verify faculty ID exists before inserting
-      if (effectiveFacultyId) {
-        const { data: facultyCheck, error: facultyCheckError } = await supabase
-          .from('faculty')
-          .select('id, name, email')
-          .eq('id', effectiveFacultyId)
-          .single();
-
-        if (facultyCheckError || !facultyCheck) {
-          console.error('Faculty ID verification failed:', facultyCheckError);
-          // Try to get any available faculty ID
-          const { data: anyFaculty } = await supabase
-            .from('faculty')
-            .select('id, name, email')
-            .limit(1)
-            .single();
-
-          if (anyFaculty) {
-            effectiveFacultyId = anyFaculty.id;
-            payload.faculty_id = effectiveFacultyId;
-          } else {
-            toast({
-              title: 'No Faculty Available',
-              description:
-                'No faculty records found. Please contact administrator.',
-              variant: 'destructive',
-            });
-            setSubmitting(false);
-            return;
-          }
-        } else {
-          /* no-op */
-        }
-      }
+      // Database enforces foreign key constraints against profiles.id
 
       const { error } = await supabase
         .from('courses')
@@ -730,8 +641,8 @@ const CoursesPage: React.FC = () => {
             const visibleCourses = courses.filter(c => {
               if (!profile) return false;
               if (profile.role === 'faculty') {
-                // For faculty, show courses where faculty_id matches their faculty record ID
-                return c.faculty_id === currentFacultyId;
+                // For faculty, show courses where faculty_id matches their profile.id
+                return c.faculty_id === profile.id;
               }
               if (profile.role === 'student') {
                 // For students, check if they are assigned to this course using profile.id

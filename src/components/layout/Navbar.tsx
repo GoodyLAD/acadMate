@@ -66,13 +66,13 @@ const Navbar = () => {
   const [indicator, setIndicator] = React.useState<{
     left: number;
     width: number;
-  }>({ left: 0, width: 0 });
+    opacity: number;
+  }>({ left: 0, width: 0, opacity: 0 });
   const [focusedIndex, setFocusedIndex] = React.useState<number | null>(null);
 
   // ── Student-only routes ──────────────────────────────────────────────
   const studentItems = [
-    { label: 'Home', to: '/home' },
-    { label: 'Dashboard', to: '/' },
+    { label: 'Home', to: '/' },
     { label: 'Community', to: '/community' },
     { label: 'Events', to: '/events' },
     { label: 'Leaderboard', to: '/leaderboard' },
@@ -81,7 +81,7 @@ const Navbar = () => {
 
   // ── Faculty-only routes ──────────────────────────────────────────────
   const facultyItems = [
-    { label: 'Dashboard', to: '/' },
+    { label: 'Dashboard', to: '/dashboard' },
     { label: 'Courses', to: '/courses' },
     { label: 'Schedule', to: '/schedule' },
     { label: 'My Students', to: '/faculty/students' },
@@ -114,7 +114,7 @@ const Navbar = () => {
     }
     // default / loading: show a minimal common set
     return [
-      { label: 'Dashboard', to: '/' },
+      { label: 'Dashboard', to: '/dashboard' },
       { label: 'Events', to: '/events' },
     ];
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -134,8 +134,10 @@ const Navbar = () => {
       if (container && btn) {
         const cRect = container.getBoundingClientRect();
         const bRect = btn.getBoundingClientRect();
-        setIndicator({ left: bRect.left - cRect.left, width: bRect.width });
+        setIndicator({ left: bRect.left - cRect.left, width: bRect.width, opacity: 1 });
       }
+    } else {
+      setIndicator(prev => ({ ...prev, opacity: 0 }));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname, items]);
@@ -182,7 +184,7 @@ const Navbar = () => {
             <span
               aria-hidden='true'
               className='pointer-events-none absolute top-1 bottom-1 rounded-full bg-[#111827] shadow-sm transition-all duration-300 ease-out z-0'
-              style={{ left: indicator.left, width: indicator.width }}
+              style={{ left: indicator.left, width: indicator.width, opacity: indicator.opacity }}
             />
             {items.map(item => {
               const isActive = isItemActive(item.to);
